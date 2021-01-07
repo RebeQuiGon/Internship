@@ -64,6 +64,31 @@ crs(sand_bund) <- CRS('+init=EPSG:25832')
 crs(ler_top) <- CRS('+init=EPSG:25832')
 crs(ler_bund) <- CRS('+init=EPSG:25832')
 
+#Set origin sand
+t=length(sand_top@layers)
+
+for (x in 1:t) {
+  origin(sand_top[[x]])<-0
+  origin(sand_top)<-0
+}
+for (x in 1:t) {
+  origin(sand_bund[[x]])<-0
+  origin(sand_bund)<-0
+}
+
+#Set origin clay
+t=length(ler_top@layers)
+
+for (x in 1:t) {
+  origin(ler_top[[x]])<-0
+  origin(ler_top)<-0
+}
+
+for (x in 1:t) {
+  origin(ler_bund[[x]])<-0
+  origin(ler_bund)<-0
+}
+
 #1. Calculate sand thickness
 sand_thickness<- stack(sand_top-sand_bund)
 
